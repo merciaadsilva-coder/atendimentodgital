@@ -1,1 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Doublenet | Fibra Óptica em Curitiba - Inovação e Velocidade</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (ícones modernos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Poppins e Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, .navbar-brand, .btn {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Cores inovadoras e gradientes */
+    :root {
+      --primary-dark: #0a2b3e;
+      --primary-teal: #14b8a6;
+      --primary-electric: #06b6d4;
+      --accent-orange: #f97316;
+      --grad-hero: linear-gradient(135deg, #0c4a6e 0%, #0891b2 100%);
+      --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+
+    /* Navbar moderna */
+    .navbar {
+      background-color: rgba(10, 43, 62, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 0.8rem 0;
+      transition: all 0.3s;
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(120deg, #FFFFFF, #a5f3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+    }
+    .nav-link {
+      color: #e2e8f0 !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: 0.2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #14b8a6 !important;
+      transform: translateY(-1px);
+    }
+
+    /* Hero section inovadora */
+    .hero {
+      background: var(--grad-hero);
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 0 6rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+    }
+    .hero h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .hero .btn-outline-light {
+      border-width: 2px;
+      transition: 0.3s;
+    }
+    .hero .btn-outline-light:hover {
+      background: white;
+      color: #0c4a6e;
+      transform: translateY(-3px);
+    }
+
+    /* cards modernos */
+    .feature-card, .info-card {
+      background: white;
+      border-radius: 2rem;
+      transition: all 0.25s ease;
+      border: none;
+      box-shadow: var(--card-shadow);
+      height: 100%;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.2);
+    }
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(145deg, #e0f2fe, #ccfbf1);
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .icon-circle i {
+      font-size: 2.2rem;
+      color: #0f766e;
+    }
+
+    /* Sessão Sobre */
+    .about-section {
+      background: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .badge-doublenet {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+    }
+    .text-teal {
+      color: #14b8a6 !important;
+    }
+    .bg-teal {
+      background-color: #14b8a6;
+    }
+    .btn-outline-teal {
+      border: 2px solid #14b8a6;
+      color: #14b8a6;
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-weight: 600;
+    }
+    .btn-outline-teal:hover {
+      background: #14b8a6;
+      color: white;
+    }
+    .btn-success-custom {
+      background-color: #14b8a6;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border-radius: 40px;
+    }
+    .btn-success-custom:hover {
+      background-color: #0d9488;
+      transform: scale(1.02);
+    }
+    /* Footer */
+    footer {
+      background: #0a2b3e;
+      color: #cbd5e1;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+    }
+    footer a {
+      color: #99f6e4;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: white;
+    }
+    /* Mapa placeholder caso API falhe */
+    .map-placeholder {
+      background: #e2e8f0;
+      border-radius: 20px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #475569;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero {
+        text-align: center;
+        padding: 3rem 0 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-network-wired me-2"></i>Doublenet
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bg-light rounded"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        <li class="nav-item"><a class="nav-link" href="#localizacao">Localização</a></li>
+      </ul>
+      <a href="#contato" class="btn btn-outline-light ms-lg-3 rounded-pill px-4">Assine Já</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 text-white">
+        <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill"><i class="fas fa-bolt me-1"></i> Internet de Verdade</span>
+        <h1 class="mb-4">Fibra Óptica <br> com a força Doublenet</h1>
+        <p class="lead mb-4 opacity-90">Mais de 5 anos conectando Curitiba com inovação, alta velocidade e estabilidade. SCM multimídia e suporte local.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contato" class="btn btn-light btn-lg rounded-pill px-5"><i class="fas fa-tachometer-alt me-2"></i>Planos exclusivos</a>
+          <a href="#sobre" class="btn btn-outline-light btn-lg rounded-pill px-4"><i class="fas fa-info-circle me-2"></i>Conheça a Doublenet</a>
+        </div>
+        <div class="mt-4 d-flex gap-4 flex-wrap">
+          <span><i class="fas fa-check-circle me-1"></i> 100% Fibra</span>
+          <span><i class="fas fa-shield-alt me-1"></i> Conexão Estável</span>
+          <span><i class="fas fa-headset me-1"></i> Suporte ágil</span>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center">
+        <img src="https://img.icons8.com/fluency/400/null/internet.png" alt="conexão" class="img-fluid" style="max-width: 280px; filter: drop-shadow(0 15px 10px rgba(0,0,0,0.2));">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diferenciais / Ícones + Frases inovadoras -->
+<div class="container mt-5 pt-4">
+  <div class="row text-center mb-5">
+    <div class="col-12">
+      <h2 class="fw-bold"><span class="border-bottom border-4 border-teal pb-2">Inovação que conecta</span></h2>
+      <p class="text-secondary mt-3">Tecnologia, transparência e performance para sua casa ou negócio.</p>
+    </div>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="feature-card p-4 text-center">
+        <div class="icon-circle mx-auto"><i class="fas fa-rocket"></i></div>
+        <h4 class="fw-bold">Velocidade Hyperspeed</h4>
+        <p class="text-secondary">Planos de até 1 Giga com latência mínima, ideal para gamers, streaming e home office.</p>
+        <span class="badge bg-teal bg-opacity-10 text-teal rounded-pill">+ de 500 clientes satisfeitos</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card p-4 text-center">
+        <div class="icon-circle mx-auto"><i class="fas fa-chart-line"></i></div>
+        <h4 class="fw-bold">SCM regulamentado</h4>
+        <p class="text-secondary">Serviço de Comunicação Multimídia com altos padrões da Anatel. Conectividade legal e confiável.</p>
+        <span class="badge bg-teal bg-opacity-10 text-teal rounded-pill">Ativa desde 2020</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card p-4 text-center">
+        <div class="icon-circle mx-auto"><i class="fas fa-map-marker-alt"></i></div>
+        <h4 class="fw-bold">Cobertura Curitiba/PR</h4>
+        <p class="text-secondary">Atendemos Xaxim e região metropolitana com equipe técnica própria e instalação rápida.</p>
+        <span class="badge bg-teal bg-opacity-10 text-teal rounded-pill"><i class="fas fa-calendar-alt"></i> 5 anos +</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sobre + Dados empresariais -->
+<section id="sobre" class="container my-5 pt-4">
+  <div class="about-section">
+    <div class="row g-5 align-items-center">
+      <div class="col-md-6">
+        <span class="badge-doublenet mb-3"><i class="far fa-building me-1"></i> Quem somos</span>
+        <h2 class="fw-bold mb-3">Doublenet Informática LTDA</h2>
+        <p class="lead">Desde 21 de agosto de 2020, levamos conectividade de verdade para Curitiba e região. Somos mais que um provedor: entregamos experiências digitais com suporte humano e tecnologia de ponta.</p>
+        <p><i class="fas fa-check-circle text-teal me-2"></i> <strong>Atividade principal:</strong> 61.10-8-03 - Serviços de Comunicação Multimídia (SCM)</p>
+        <p><i class="fas fa-check-circle text-teal me-2"></i> <strong>CNPJ:</strong> 38.188.893/0001-13 &nbsp;|&nbsp; <strong>Inscrição Estadual PR:</strong> 90885429-21</p>
+        <p><i class="fas fa-check-circle text-teal me-2"></i> <strong>Tempo de mercado:</strong> 5 anos, 7 meses e 3 dias de inovação contínua.</p>
+        <p><i class="fas fa-check-circle text-teal me-2"></i> <strong>Situação cadastral:</strong> <span class="badge bg-success">ATIVA</span> — Regular e comprometida com a qualidade.</p>
+        <div class="mt-4">
+          <i class="fas fa-quote-left fs-1 text-teal opacity-50 me-2"></i>
+          <span class="fst-italic">"Inovação não é só tecnologia, é conectar pessoas com liberdade."</span>
+          <div class="mt-2">— Equipe Doublenet</div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/300/external-internet-100-flaticons-lineal-color-flat-icons.png" alt="sobre" class="img-fluid">
+        <div class="bg-light p-3 rounded-4 mt-3 shadow-sm">
+          <i class="fas fa-trophy text-warning me-2"></i> +5 anos transformando a experiência digital
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seção Serviços e planos -->
+<section id="servicos" class="container my-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Planos pensados para você</h2>
+    <p class="text-secondary">Escolha o plano ideal e tenha wi-fi de alta performance em toda sua casa.</p>
+  </div>
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-lg rounded-4 text-center p-3">
+        <div class="card-body">
+          <i class="fas fa-wifi fa-3x text-primary mb-3"></i>
+          <h3 class="card-title fw-bold">500 Mega</h3>
+          <h2 class="text-teal fw-bold">R$99,90<span class="fs-6">/mês</span></h2>
+          <hr>
+          <ul class="list-unstyled text-start mt-3">
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Fibra óptica dedicada</li>
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Suporte técnico 24h</li>
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Roteador Wi-Fi 6 incluso</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline-teal rounded-pill w-100 mt-3">Assine agora</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg rounded-4 text-center p-3" style="background: linear-gradient(145deg, #ffffff, #f1f5f9); border-top: 4px solid #14b8a6;">
+        <div class="card-body">
+          <i class="fas fa-bolt fa-3x text-warning mb-3"></i>
+          <h3 class="card-title fw-bold">1 Giga + Streaming</h3>
+          <h2 class="text-teal fw-bold">R$149,90<span class="fs-6">/mês</span></h2>
+          <hr>
+          <ul class="list-unstyled text-start mt-3">
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Download/Upload 1 Gbps</li>
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Suporte prioritário</li>
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Inclui serviços de multimídia</li>
+          </ul>
+          <a href="#contato" class="btn btn-success-custom rounded-pill w-100 mt-3 text-white">Plano TOP</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-lg rounded-4 text-center p-3">
+        <div class="card-body">
+          <i class="fas fa-charging-station fa-3x text-secondary mb-3"></i>
+          <h3 class="card-title fw-bold">Empresarial</h3>
+          <h2 class="text-teal fw-bold">Sob Consulta</h2>
+          <hr>
+          <ul class="list-unstyled text-start mt-3">
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Link dedicado com SLA</li>
+            <li><i class="fas fa-check-circle text-teal me-2"></i> IP Fixo disponível</li>
+            <li><i class="fas fa-check-circle text-teal me-2"></i> Atendimento corporativo</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline-teal rounded-pill w-100 mt-3">Fale com vendas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Localização + Mapa (fallback elegante) -->
+<section id="localizacao" class="container my-5">
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="info-card p-4 h-100">
+        <h3 class="fw-bold mb-3"><i class="fas fa-map-pin text-teal me-2"></i> Onde estamos</h3>
+        <div class="mb-4">
+          <p><i class="fas fa-location-dot fa-fw text-teal"></i> <strong>Logradouro:</strong> Rua Clementina de Paula Ferreira, 90</p>
+          <p><i class="fas fa-building fa-fw text-teal"></i> <strong>Bairro:</strong> Xaxim</p>
+          <p><i class="fas fa-city fa-fw text-teal"></i> <strong>Município:</strong> Curitiba - Paraná</p>
+          <p><i class="fas fa-mail-bulk fa-fw text-teal"></i> <strong>CEP:</strong> 81820-290</p>
+          <p><i class="fas fa-envelope fa-fw text-teal"></i> <strong>Correspondência:</strong> Doublenet Informatica LTDA, Rua Clementina de Paula Ferreira 90, Xaxim, Curitiba PR, 81820-290</p>
+        </div>
+        <div class="bg-light rounded-3 p-3">
+          <i class="fas fa-clock me-2"></i> Atendimento presencial: Seg a Sex das 9h às 18h
+        </div>
+        <div class="mt-4">
+          <!-- Mapa estático confiável (OpenStreetMap via iframe) -->
+          <iframe width="100%" height="220" style="border:0; border-radius: 20px;" loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=-49.2887%2C-25.4554%2C-49.2787%2C-25.4454&layer=mapnik&marker=-25.4504%2C-49.2837" title="Mapa Doublenet - Rua Clementina de Paula Ferreira"></iframe>
+          <small class="text-secondary">Rua Clementina de Paula Ferreira, 90 - Xaxim, Curitiba/PR.</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="info-card p-4 h-100">
+        <h3 class="fw-bold mb-3"><i class="fas fa-address-card text-teal me-2"></i> Dados legais e registro</h3>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="fas fa-chart-simple me-2"></i> <strong>Razão Social:</strong> Doublenet Informatica LTDA</li>
+          <li class="mb-2"><i class="fas fa-tag me-2"></i> <strong>Nome Fantasia:</strong> Doublenet</li>
+          <li class="mb-2"><i class="fas fa-qrcode me-2"></i> <strong>CNPJ:</strong> 38.188.893/0001-13</li>
+          <li class="mb-2"><i class="fas fa-registered me-2"></i> <strong>Inscrição Estadual PR:</strong> 90885429-21</li>
+          <li class="mb-2"><i class="fas fa-calendar-week me-2"></i> <strong>Abertura:</strong> 21/08/2020 — 5 anos, 7 meses e 3 dias de inovação</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> <strong>Situação:</strong> ATIVA na Receita Federal</li>
+          <li class="mb-2"><i class="fas fa-globe me-2"></i> <strong>Atividade principal:</strong> 61.10-8-03 (SCM)</li>
+        </ul>
+        <div class="alert alert-teal bg-teal bg-opacity-10 mt-3 rounded-4">
+          <i class="fas fa-handshake me-2"></i> Compromisso com a transparência e conectividade de excelência.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contato e formulário -->
+<section id="contato" class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="about-section p-4 p-lg-5">
+        <div class="row">
+          <div class="col-md-5 mb-4">
+            <h3 class="fw-bold"><i class="fas fa-headset"></i> Fale com a Doublenet</h3>
+            <p>Nossa equipe está pronta para oferecer o melhor atendimento e esclarecer dúvidas sobre planos, instalação e suporte técnico.</p>
+            <div class="mt-4">
+              <div class="mb-3">
+                <i class="fas fa-phone-alt fa-fw text-teal fs-5"></i> <strong>Telefone:</strong> <a href="tel:4436591465" class="text-decoration-none text-teal">(44) 3659-1465</a> <span class="badge bg-secondary">Ligar agora</span>
+              </div>
+              <div class="mb-3">
+                <i class="fas fa-envelope fa-fw text-teal fs-5"></i> <strong>E-mail:</strong> <a href="mailto:danizinha138@hotmail.com" class="text-decoration-none text-teal">danizinha138@hotmail.com</a> <span class="badge bg-info">Enviar e-mail</span>
+              </div>
+              <div class="mt-4">
+                <i class="fab fa-whatsapp fa-2x text-success me-2"></i> <strong>WhatsApp Comercial:</strong> (44) 3659-1465 <br>
+                <small class="text-secondary">Atendimento rápido e personalizado</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <h4>Envie uma mensagem</h4>
+            <form action="#" method="post">
+              <div class="row g-3">
+                <div class="col-12">
+                  <input type="text" class="form-control form-control-lg rounded-4" placeholder="Seu nome completo" required>
+                </div>
+                <div class="col-12">
+                  <input type="email" class="form-control form-control-lg rounded-4" placeholder="E-mail para contato" required>
+                </div>
+                <div class="col-12">
+                  <input type="tel" class="form-control form-control-lg rounded-4" placeholder="Telefone / WhatsApp">
+                </div>
+                <div class="col-12">
+                  <textarea rows="3" class="form-control rounded-4" placeholder="Conte-nos qual plano ou suporte você precisa..."></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-success-custom w-100 rounded-pill py-3"><i class="fas fa-paper-plane"></i> Solicitar contato</button>
+                </div>
+                <div class="col-12 text-center small text-secondary">Respondemos em até 2 horas úteis.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer completo -->
+<footer class="pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-5">
+        <h4 class="text-white fw-bold"><i class="fas fa-network-wired"></i> Doublenet</h4>
+        <p class="text-white-50">Conectando Curitiba com fibra óptica e propósito. Mais de 5 anos de inovação e compromisso.</p>
+        <p class="small">CNPJ: 38.188.893/0001-13 | Inscrição Estadual: 90885429-21</p>
+        <div class="d-flex gap-3 fs-4">
+          <a href="#" class="text-white-50"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5 class="text-white">Mapa do Site</h5>
+        <ul class="list-unstyled">
+          <li><a href="#home" class="text-white-50 text-decoration-none">Início</a></li>
+          <li><a href="#sobre" class="text-white-50 text-decoration-none">Sobre</a></li>
+          <li><a href="#servicos" class="text-white-50 text-decoration-none">Planos</a></li>
+          <li><a href="#localizacao" class="text-white-50 text-decoration-none">Localização</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-white">Atendimento</h5>
+        <p><i class="fas fa-phone-alt me-2"></i> (44) 3659-1465 <br>
+        <i class="fas fa-envelope me-2"></i> danizinha138@hotmail.com <br>
+        <i class="fas fa-map-marker-alt me-2"></i> Rua Clementina de Paula Ferreira, 90 - Xaxim, Curitiba/PR</p>
+        <p class="small mt-2">© 2026 Doublenet Informatica LTDA - Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
